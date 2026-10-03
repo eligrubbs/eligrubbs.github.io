@@ -28,22 +28,25 @@
     <header class="site-header">
       <h1>Elijah Grubbs</h1>
       <p class="site-header__intro">
-        I'm a software developer and a computer science graduate of the
-        University of Michigan. I build web apps with Django and
-        hypermedia, and I learn systems languages like Rust and Zig by
-        writing small games and tools.
+        Data scientist, software developer.
+        <br>
+        Based in Chicago, Illinois.
       </p>
-      <nav aria-label="Elsewhere">
-        <ul class="link-list" role="list">
-          <li><a href="https://linkedin.com/in/grubbse">LinkedIn</a></li>
-          <li><a href="https://github.com/eligrubbs">GitHub</a></li>
-          <li><a href="mailto:contact@eligrubbs.com">contact@eligrubbs.com</a></li>
-        </ul>
-      </nav>
     </header>
 
     <main id="main">
-      <section class="section" aria-labelledby="projects-heading">
+      <section class="section" id="contact" aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Contact</h2>
+        <address>
+          <ul class="link-list" role="list">
+            <li><a href="https://linkedin.com/in/grubbse">LinkedIn</a></li>
+            <li><a href="https://github.com/eligrubbs">GitHub</a></li>
+            <li><a href="mailto:contact@eligrubbs.com">contact@eligrubbs.com</a></li>
+          </ul>
+        </address>
+      </section>
+
+      <section class="section" id="projects" aria-labelledby="projects-heading">
         <h2 id="projects-heading">Projects</h2>
         <ul class="project-list" role="list">
           <li class="project">
@@ -52,13 +55,6 @@
               <span class="tag">Python</span>
             </div>
             <p class="project__description">Learnings building and deploying a modern django app.</p>
-          </li>
-          <li class="project">
-            <div class="project__header">
-              <h3><a href="https://github.com/eligrubbs/EECS498-008-Room-Gridworld/tree/main">RL-Gridworld</a></h3>
-              <span class="tag">Python</span>
-            </div>
-            <p class="project__description">Implementations of foundational Reinforcement Learning algorithms.</p>
           </li>
           <li class="project">
             <div class="project__header">
@@ -80,6 +76,13 @@
               <span class="tag">Python</span>
             </div>
             <p class="project__description">A machine learning model that classifies iris species from sepal and petal measurements, served through an API.</p>
+          </li>
+          <li class="project">
+            <div class="project__header">
+              <h3><a href="https://github.com/eligrubbs/EECS498-008-Room-Gridworld/tree/main">RL-Gridworld</a></h3>
+              <span class="tag">Python</span>
+            </div>
+            <p class="project__description">Implementations of foundational Reinforcement Learning algorithms.</p>
           </li>
         </ul>
       </section>
