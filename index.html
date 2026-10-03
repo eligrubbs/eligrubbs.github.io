@@ -1,70 +1,107 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="/src/input.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-  <!-- I copied design from enjeeneer.io -->
-  <title>Personal Website</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Elijah Grubbs</title>
+  <meta name="description" content="Elijah Grubbs is a software developer and University of Michigan computer science graduate. Projects in Django, Rust, and Zig.">
+  <link rel="canonical" href="https://www.eligrubbs.com/">
 
-  <!-- Favicon Schriften Font-->
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#fdfdfc" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#141414" media="(prefers-color-scheme: dark)">
 
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.eligrubbs.com/">
+  <meta property="og:title" content="Elijah Grubbs">
+  <meta property="og:description" content="Software developer and University of Michigan computer science graduate. Projects in Django, Rust, and Zig.">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" sizes="16x16">
+  <link rel="stylesheet" href="/assets/css/style.css">
 </head>
-
 <body>
-  <div class="container">
-    <header class="banner">
-      <nav>
-        <ul class="nav-ul">
-          <li class="nav-item">
-            <a href="/">about</a>
-          </li>
-          <li class="nav-item">
-            <a href="/">posts</a>
-          </li>
-          <li class="nav-item">
-            <a href="/pages/project.html">projects</a>
-          </li>
-          <li class="nav-item">
-            <a href="/">other</a>
-          </li>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="page">
+    <header class="site-header">
+      <h1>Elijah Grubbs</h1>
+      <p class="site-header__intro">
+        I'm a software developer and a computer science graduate of the
+        University of Michigan. I build web apps with Django and
+        hypermedia, and I learn systems languages like Rust and Zig by
+        writing small games and tools.
+      </p>
+      <nav aria-label="Elsewhere">
+        <ul class="link-list" role="list">
+          <li><a href="https://linkedin.com/in/grubbse">LinkedIn</a></li>
+          <li><a href="https://github.com/eligrubbs">GitHub</a></li>
+          <li><a href="mailto:contact@eligrubbs.com">contact@eligrubbs.com</a></li>
         </ul>
       </nav>
     </header>
-    <div class="content">
-      <main class="card">
-        <h1>
-          Elijah Grubbs
-        </h1>
-        <p>CS Graduate from The University of Michigan.</p>
-        <ul class="socials-ul">
-          <li class="socials-item">
-            <a href="mailto:contact@eligrubbs.com" title="Contact Me" target="_blank" rel="noopener">
-              <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5px">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-            </a>
+
+    <main id="main">
+      <section class="section" aria-labelledby="projects-heading">
+        <h2 id="projects-heading">Projects</h2>
+        <ul class="project-list" role="list">
+          <li class="project">
+            <div class="project__header">
+              <h3><a href="https://github.com/eligrubbs/django-cotton-daisyui-setup">django-cotton-daisyui-setup</a></h3>
+              <span class="tag">HTML</span>
+            </div>
+            <p class="project__description">A starter template for building Django sites with django-cotton and daisyUI.</p>
           </li>
-          <li class="socials-item">
-            <a href="https://github.com/eligrubbs" title="Github" target="_blank" rel="noopener">
-              <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5px">
-                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-            </a>
+          <li class="project">
+            <div class="project__header">
+              <h3><a href="https://github.com/eligrubbs/creddie">creddie</a></h3>
+              <span class="tag">HTML</span>
+            </div>
+            <p class="project__description">A web server for tracking financial transactions.</p>
           </li>
-          <li class="socials-item">
-            <a href="https://linkedin.com/in/grubbse" title="Linkedin" target="_blank" rel="noopener">
-              <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" stroke="white" stroke-width=".3px">
-                <path d="M6.5,3A3.5,3.5,0,1,0,10,6.5,3.5,3.5,0,0,0,6.5,3Zm0,5A1.5,1.5,0,1,1,8,6.5,1.5,1.5,0,0,1,6.5,8Z"/>
-                <path d="M9,11H4a1,1,0,0,0,0,2H8V27H5V16a1,1,0,0,0-2,0V28a1,1,0,0,0,1,1H9a1,1,0,0,0,1-1V12A1,1,0,0,0,9,11Z"/>
-                <path d="M27.34,12.68A5.94,5.94,0,0,0,23,11H22a7.84,7.84,0,0,0-4,.89A1,1,0,0,0,17,11H12a1,1,0,0,0-1,1V28a1,1,0,0,0,1,1h5a1,1,0,0,0,1-1V19a2,2,0,0,1,4,0v9a1,1,0,0,0,1,1h5a1,1,0,0,0,1-1V17A5.9,5.9,0,0,0,27.34,12.68ZM27,27H24V19a4,4,0,0,0-8,0v8H13V13h3v1a1,1,0,0,0,.62.92,1,1,0,0,0,1.09-.21c.95-1,1.7-1.71,4.29-1.71h1a4,4,0,0,1,2.92,1.09A4,4,0,0,1,27,17Z"/>
-              </svg>
-            </a>
+          <li class="project">
+            <div class="project__header">
+              <h3><a href="https://github.com/eligrubbs/euchrez">euchrez</a></h3>
+              <span class="tag">Zig</span>
+            </div>
+            <p class="project__description">The card game Euchre, implemented in Zig. There's also a <a href="https://github.com/eligrubbs/euchre-rs">Rust version</a>.</p>
+          </li>
+          <li class="project">
+            <div class="project__header">
+              <h3><a href="https://github.com/eligrubbs/skills">skills</a></h3>
+              <span class="tag">Shell</span>
+            </div>
+            <p class="project__description">My personal collection of skills for AI coding agents.</p>
+          </li>
+          <li class="project">
+            <div class="project__header">
+              <h3><a href="https://github.com/eligrubbs/hypermedia-exercises">hypermedia-exercises</a></h3>
+              <span class="tag">HTML</span>
+            </div>
+            <p class="project__description">My solutions to the exercises in the book <cite>Hypermedia Systems</cite>.</p>
+          </li>
+          <li class="project">
+            <div class="project__header">
+              <h3><a href="https://github.com/eligrubbs/iris_ml_api">iris_ml_api</a></h3>
+              <span class="tag">Python</span>
+            </div>
+            <p class="project__description">A machine learning model that classifies iris species from sepal and petal measurements, served through an API.</p>
+          </li>
+          <li class="project">
+            <div class="project__header">
+              <h3><a href="https://github.com/eligrubbs/advent-of-code">advent-of-code</a></h3>
+              <span class="tag">Rust</span>
+            </div>
+            <p class="project__description">My solutions to Advent of Code puzzles.</p>
           </li>
         </ul>
-      </main>
-    </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© Elijah Grubbs</p>
+    </footer>
   </div>
 </body>
 </html>

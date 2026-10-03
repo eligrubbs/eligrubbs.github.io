@@ -1,0 +1,319 @@
+/*
+ * eligrubbs.com stylesheet
+ *
+ * Organized as an atomic design system, lowest level first. Cascade layers
+ * make the order explicit, so later layers win without specificity fights.
+ *
+ *   tokens     design decisions as custom properties (color, type, space)
+ *   reset      a minimal, modern normalization
+ *   base       bare HTML elements, styled only with tokens
+ *   atoms      smallest reusable pieces (link, tag, visually-hidden, skip link)
+ *   molecules  combinations of atoms (inline link list, project entry)
+ *   organisms  page regions (site header, section, project list, footer)
+ *   layout     the page frame
+ *
+ * Components use only tokens, never raw values, so changing the design
+ * means editing the tokens layer.
+ */
+
+@layer tokens, reset, base, atoms, molecules, organisms, layout;
+
+/* ------------------------------------------------------------------ */
+/* Tokens                                                              */
+/* ------------------------------------------------------------------ */
+
+@layer tokens {
+  :root {
+    color-scheme: light dark;
+
+    /* Color: a neutral ramp and one accent. light-dark() switches values
+       with the user's OS theme. */
+    --color-bg:      light-dark(#fdfdfc, #141414);
+    --color-text:    light-dark(#1b1b1b, #e6e6e3);
+    --color-muted:   light-dark(#5f5f5b, #a1a19c);
+    --color-rule:    light-dark(#e3e3df, #2c2c2a);
+    --color-accent:  light-dark(#1f4fbf, #8fb0ff);
+    --color-focus:   var(--color-accent);
+
+    /* Typography */
+    --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+      Arial, sans-serif;
+    --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono",
+      monospace;
+
+    /* Fluid type scale (about 1.2 ratio), clamped between mobile and desktop */
+    --text-sm:   clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
+    --text-base: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+    --text-lg:   clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);
+    --text-xl:   clamp(1.75rem, 1.5rem + 1.2vw, 2.5rem);
+
+    --leading-tight: 1.2;
+    --leading-body:  1.65;
+
+    --weight-normal: 400;
+    --weight-medium: 500;
+    --weight-bold:   650;
+
+    --tracking-caps: 0.08em;
+
+    /* Spacing: a 4px-based scale */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+
+    /* Layout */
+    --measure: 40rem;          /* comfortable line length for reading */
+    --gutter: var(--space-6);
+
+    /* Borders and motion */
+    --border-width: 1px;
+    --radius-sm: 0.25rem;
+    --focus-ring: 2px solid var(--color-focus);
+    --focus-offset: 3px;
+    --duration-fast: 120ms;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Reset                                                               */
+/* ------------------------------------------------------------------ */
+
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  * {
+    margin: 0;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  img,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Base: bare elements                                                 */
+/* ------------------------------------------------------------------ */
+
+@layer base {
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: var(--leading-body);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    line-height: var(--leading-tight);
+    text-wrap: balance;
+  }
+
+  h1 {
+    font-size: var(--text-xl);
+    font-weight: var(--weight-bold);
+    letter-spacing: -0.02em;
+  }
+
+  /* Section headings are small caps labels, not big type */
+  h2 {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    color: var(--color-muted);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-caps);
+  }
+
+  h3 {
+    font-size: var(--text-base);
+    font-weight: var(--weight-medium);
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ul[role="list"] {
+    list-style: none;
+    padding: 0;
+  }
+
+  :focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: var(--focus-offset);
+    border-radius: var(--radius-sm);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Atoms                                                               */
+/* ------------------------------------------------------------------ */
+
+@layer atoms {
+  /* Links are underlined so they don't depend on color alone */
+  a {
+    color: var(--color-accent);
+    text-decoration-line: underline;
+    text-decoration-thickness: var(--border-width);
+    text-underline-offset: 0.2em;
+    transition: text-decoration-thickness var(--duration-fast) ease;
+  }
+
+  a:hover {
+    text-decoration-thickness: 2px;
+  }
+
+  /* Small monospace label, e.g. a project's language */
+  .tag {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+    white-space: nowrap;
+  }
+
+  .text-muted {
+    color: var(--color-muted);
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .skip-link {
+    position: absolute;
+    top: var(--space-2);
+    left: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-bg);
+    border: var(--border-width) solid var(--color-rule);
+    border-radius: var(--radius-sm);
+    transform: translateY(-200%);
+  }
+
+  .skip-link:focus-visible {
+    transform: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Molecules                                                           */
+/* ------------------------------------------------------------------ */
+
+@layer molecules {
+  /* Horizontal list of links, wraps on small screens */
+  .link-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-6);
+  }
+
+  /* One project: name and language on one line, description below */
+  .project {
+    display: grid;
+    gap: var(--space-1);
+  }
+
+  .project__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-1) var(--space-4);
+  }
+
+  .project__description {
+    color: var(--color-muted);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Organisms                                                           */
+/* ------------------------------------------------------------------ */
+
+@layer organisms {
+  .site-header {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .site-header__intro {
+    font-size: var(--text-lg);
+  }
+
+  .section {
+    display: grid;
+    gap: var(--space-6);
+    padding-block-start: var(--space-8);
+    border-block-start: var(--border-width) solid var(--color-rule);
+  }
+
+  .project-list {
+    display: grid;
+    gap: var(--space-8);
+  }
+
+  .site-footer {
+    padding-block-start: var(--space-6);
+    border-block-start: var(--border-width) solid var(--color-rule);
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Layout                                                              */
+/* ------------------------------------------------------------------ */
+
+@layer layout {
+  /* Single centered reading column. Regions are spaced evenly. */
+  .page {
+    display: grid;
+    gap: var(--space-12);
+    max-width: var(--measure);
+    margin-inline: auto;
+    padding: var(--space-16) var(--gutter) var(--space-8);
+  }
+
+  @media (min-width: 48rem) {
+    .page {
+      padding-block-start: calc(var(--space-16) * 1.5);
+      gap: var(--space-16);
+    }
+  }
+}
